@@ -22,6 +22,8 @@ for i in range(1, upper):
     for j in range(i, upper):
         x = ct(i, j)
         new_diff = abs(2000000 - x)
+        if x + new_diff > 2000000 + diff:
+            break
         if new_diff < diff:
             diff = new_diff
             bits = x, i, j, i*j 
