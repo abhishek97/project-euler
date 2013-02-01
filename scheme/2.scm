@@ -1,0 +1,16 @@
+(define (mod x y)
+  (cond ((> x y) (mod (- x y) y))
+        ((= x y) 0)
+        (else x)))
+(define (multiple-of? a b)
+  (= 0 (mod b a)))
+(define (even? a) (multiple-of? 2 a))
+
+(define (even-fib-sum max-term)
+  (define (fib-sum-iter i last sum)
+    (if (> i max-term)
+      sum
+      (fib-sum-iter (+ i last) i (if (even? i) (+ sum i) sum))
+      ))
+  (fib-sum-iter 1 0 0))
+(even-fib-sum 4000000)
